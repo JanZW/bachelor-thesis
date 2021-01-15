@@ -1,0 +1,179 @@
+\section{A (very) Brief Introduction to Game/Decision Theory}
+%up to Minimax theorem
+%\begin{definition}[\cite{ferguson:decistion-theory}]
+%	A \emph{zero-sum two-person game} consist of three basic elements:
+%	\begin{enumerate}
+%		\item A nonempty set, $\Theta$, of possible states of nature, sometimes referred to as the parameter space.
+%		\item A nonempty set, $\mathfrak{A}$, of actions available to the statistician.
+%		\item A loss function, $L(\theta,a)$, a real-valued function defined on $\Theta\times \mathcal{A}$.
+%	\end{enumerate}
+%	We write $(\Theta,\mathfrak{A},L)$ for a game described as above.
+%\end{definition}
+The goal of this section is a minimax theorem, which states that in certain situations (see below) the maximum and minimum \glqq operators\grqq{} commute, i.e. $\min_x\max_y f(x,y)=\max_x\min_y f(x,y)$.
+
+We will show this by studying the topic of game theory\footnote{There is a method to achieve the same result without game theory for spaces $X$ for which $C(X)^\prime$ possesses a Schauder basis. This approach uses methods similar to those in \cite{nash2} by Brumm. Here the Banach fixed point theorem is applied to finite games in order to show the existence of Nash-Equilibria from which the minimax theorem follows. For the general case a similar approach with the Schauder fixed point theorem needs to be applied. However, since the author is unaware of a result stating that such a Schauder base exists for all compact, connected, non-empty Hausdorff spaces, we only describe the game theoretic approach.}. With this we follow Furguson's decision theoretic approach in \cite{ferguson:decistion-theory}. 
+We begin with the definition of what we consider a game.
+
+\begin{definition}
+	Let $\Theta$ and $\mathcal{A}$ be nonempty sets and $L\colon\Theta\times \mathcal{A}\to \R$ a function. We call the triplet $(\Theta,\mathcal{A},L)$ a \emph{game}. Furthermore, $\Theta$ is called the set of \emph{possible states of nature}, $\mathcal{A}$ is called the set of \emph{available actions} and $L$ is called the \emph{loss function}.
+\end{definition}
+%\begin{definition}
+%	A Game consists of a triple $(\Theta,\mathcal{A},L(\theta,a))$ where $\Theta$ is a nonempty set of possible states of nature, $\mathcal{A}$ is a nonempty set of available actions and $L: \Theta\times \mathcal{A}\to \mathbb{R}: (\theta,a)\mapsto L(\theta,a)$ is the loss function.
+%\end{definition}
+
+To give some motivation for this definition, consider the following example. Let $\Theta=\{1,2\}=\mathcal{A}$ and define $L\colon \{1,2\}^2\to \R$ by
+\begin{align*}
+	L(1,1)&=-2&L(1,2)&=3\\
+	L(2,1)&=3&L(2,2)&=-4
+\end{align*}
+Clearly, this satisfies the definition of a game above. Now the triplet $(\Theta,\mathcal{A},L)$ describes a game (in the non-mathematical sense) of two players (one labeled \emph{nature}, the other \emph{statistician}) where both contestants simultaneously raise either one or two fingers. Now player \glqq nature\grqq{} wins, if the total number of raised fingers is even and player \glqq statistician\grqq{} wins if it is odd. The winner receives the total amount of raised fingers in dollars from the loser.
+
+
+We will now couple a game with a random observable, whose distribution depends on the state of nature. On the basis of the outcome of this experiment, the statistician will choose a action.
+
+\begin{definition}
+	Let $(\Theta,\mathcal{A},L)$ be a game and $X$ a random variable with distribution $P_\theta$ depending on $\theta\in \Theta$. Let $\mathcal{X}$ be the sample space of $X$ and $d:\mathcal{X}\to \mathcal{A}$ a function. Such a function $d$ is called a \emph{nonrandomized decision rule} provided the \emph{risk function}
+	\[R(\theta,d)=E_\theta L(\theta,d(X))=\int L(\theta,d(x))dP_\Theta(x)	\]
+	is defined. The set of all nonrandomized decision rules is denoted by $D$. We call the triplet $(\Theta,D,R)$ a \emph{statistical decision problem} or \emph{statistical game}.
+\end{definition}
+It is clear from the definition that $d$ represents an elementary strategy for the statistician. Note that $L(\theta,d(X))$ is now a random quantity. The risk function represents $R(\theta,d(X))$ represents the average loss provided the true state of nature is $\theta$ and the statistician chooses actions $d(X)$.
+%\begin{definition}
+%	A \emph{statistical decision problem} or \emph{statistical game} is a game $(\Theta,\mathcal{A},L)$ coupled with an experiment involving a random observable $X$ whose distribution $P_\theta$ depends on the state $\theta\in\Theta$ chosen by nature. On the basis of the outcome of the experiment $X=x$, the statistician chooses an action $d(x)\in \mathcal{A}$. Such a function $d$, which maps the sample space $\mathcal{X}$ into $\mathcal{A}$, is an elementary strategy for the statistician in this situation. The loss is now the random quantity $L(\theta,d(X))$. The expected value of $L(\theta,d(X))$ when $\theta$ is the state of nature is called the risk function
+%	\[
+%	R(\theta,d)=E_\theta L(\theta,d(X))=\int L(\theta,d(x))dP_\Theta(x)	
+%	\]
+%	and represents the average loss to the statistician when the true state of nature is $\theta$ and the statistician chooses the function $d$.
+%\end{definition}
+%
+%\begin{definition}
+%	Any function $d(x)$ that maps the sample space $\mathcal{X}$ into $\mathcal{A}$ is called a nonrandomized decision rule or a nonrandomized decision function, provided the risk function $R(\theta,d)$ exists and is finite for all $\theta\in \Theta$. The class of all nonrandomized decision rules is denoted by $D$.
+%\end{definition}
+
+%Replace $(\Theta,\mathcal{A},L)$ by $(\Theta,D,R)$ where the underlying structure of $D$ and $R$ rely on $\mathcal{A}, L$ and the distribution on $X$.
+
+\begin{definition}
+	Let $Z$ be a random variable with values in $D$. Any probability distribution $\delta$ on the space of nonrandomized decision functions, $D$, is called a randomized decision fuction or a randomized decision rule, provided the risk function
+	\[
+	R(\theta,\delta)=ER(\theta,Z)
+	\]
+	exists and is finite for all $\theta\in \Theta$. The space of all randomized decision rules is denoted by $D^\ast$.% The distribution on $\Theta$ is called prior distribution.
+\end{definition}
+
+It can also be useful to introduce distributions on the set of possible states of nature.
+\begin{definition}
+	Let $T$ be a random variable with values in $\Theta$ and distribution $\tau$.
+	This distribution $\tau$ is called a \emph{prior distribution}, provided the \emph{Bayes risk of a decision rule $\delta$ with respect to $\tau$}
+	\[
+	r(\tau,\delta)=ER(T,\delta)
+	\]
+	exists and there exists a joint distribution of $T$ and $X$ and there is a conditional distribution of $T$, given $X$. The latter is called the \emph{posterior distribution of the parameter given the observations}. The space of distributions on $\Theta$ satisfying above conditions and is denoted by $\Theta^\ast$.
+\end{definition}
+
+%Bayes risk of a descision rule $\delta$ with respect ot a prior distribution $\tau$, namely
+%\[
+%r(\tau,\delta)=ER(T,\delta)
+%\]
+%where $T$ is a random variable over $\Theta$ having distribution $\tau$. The space of distributions on $\Theta$ is denoted by $\Theta^\ast$.
+
+Before we can begin with proving the minimax theorem, we need some more definitions.
+
+\begin{definition}
+	A decision rule $\delta_0$ is said to be \emph{minimax} if\[
+	\sup_\Theta R(\theta,\delta_0)=\inf_{\delta\in \Theta^\ast}\sup_\theta R(\theta,\delta)
+	\]
+	this value is called \emph{minimax} or \emph{upper value} and denoted by $\overline{V}$.
+\end{definition}
+
+\begin{definition}
+A distribution $\tau_0\in \Theta^\ast$ is said to be least favorable if 
+\[
+\inf_\delta r(\tau_0,\delta)=\sup_\tau\inf_\delta r(\tau,\delta)
+\]
+this value is called \emph{maximin} or \emph{lower value} and denoted by $\underline{V}$.
+\end{definition}
+
+\begin{definition}
+Suppose that $\Theta$ consists of $k$ points $\theta_1,\dots,\theta_k$ and consider the set $S$ to be called the \emph{risk set} of points of the form 
+\[
+(R(\theta_1,\delta),\dots,R(\theta_k,\delta))\subset \R^k
+\]
+where $\delta$ ranges through $D^\ast$.
+Formally:
+\[
+S=\{(y_1,\dots,y_k):y_j=R(\theta_j,\delta) \text{ for some }\delta\in D^\ast\}.
+\]
+\end{definition}
+
+We are now able to prove the Minimax Theorem. We will first consider the case of finite $\Theta$ and then generalize the result.
+
+\begin{theorem}[Minimax Theorem for finite games]\label{thm:minimax-finite}
+	If for a given decision problem $(\Theta,D,R)$ with finite $\Theta=\{\theta_1,\dots,\theta_k\}$ the risk set is bounded below, then
+	\[
+	\inf_{\delta\in D^\ast}\sup_{\tau\in \Theta^\ast}r(\tau,\delta)=\sup_{\tau\in D^\ast}\inf_{\delta\in D^\ast} r(\tau,\delta)
+	\]
+	and there exists a least favorable distribution. [\dots]
+\end{theorem}
+\begin{proof}
+	It is always true that $\underline{V}\leq \overline{V}$, thus, it is sufficient to show $\overline{V}\leq \underline{V}$.
+	
+	Let $V$ denote the supremum of $\{\alpha:Q_{\alpha\mathbf{1}}\cap S=\emptyset\}$, where $\mathbf{1}=(1,\dots,1)$ and $Q_c=\{(y_1,\dots,y_k)\colon y_i\leq c_i\}$. Then for every $n$ there exists a rule $\delta_n$ such that
+	\[
+	R(\theta_j,\delta_n)\leq V+\frac{1}{n}
+	\]
+	for all $j$.
+	
+	Hence $r(\tau,\delta_n)\leq V+\frac{1}{n}$ for all $\tau$ and $\sup_\tau r(\tau,\delta_n)\leq V+\frac{1}{n}$ for all $n$, implying that $\overline{V}\leq V$. Now, show $V\leq \underline{V}$
+	
+	The convex sets $Q_{V\mathbf{1}}^\circ$ and $S$ are disjoint, so there must be a hyperplane $p^tx=c$, which separates $Q_{V\mathbf{1}}^\circ$ and $S$, say $p^tx\geq c$ for $x\in S$ and $p^tx\leq c$ for $x\in Q_{V\mathbf{1}}^\circ$.
+	
+	Each coordinate $p_j$ must be nonnegative, for if $p_j<0$ for some $j$ we may take $x_j\to -\infty$; the other coordinates of $x$ are fixed, $x\in Q_{V\mathbf{1}}^\circ$ s.t. $p^tx\to +\infty$, contradicting $p^tx\leq c$. We may also take $\sum_j p_j=1$. Thus $p$ may be taken as a prior distribution, $\tau_0$, for nature.
+	
+	Because $p^tx\leq c$ for all $x\in Q_{V\mathbf{1}}^\circ$, letting $x\to V\mathbf{1}$ implies $V\leq c$. Thus for all $\delta$
+	\[
+	r(\tau_0,\delta)=\sum_j p_jR(\theta_j,\delta)\geq c\geq V
+	\]
+	Therefore,
+	\[
+	\underline{V}=\sup_\tau\inf_\delta r(\tau,\delta)\geq\inf_\delta r(\tau_0,\delta)\geq V
+	\]
+	also $\tau_0$ is least favorable.
+\end{proof}
+
+Before we can begin with the generalization, we need the following definitions.
+\begin{definition}Let $(\Theta,D,R)$ be a statistical game.
+	\begin{enumerate}
+	\item  A decision rule $\delta_1$ is said to be \emph{as good as} a rule $\delta_2$, if $R(\theta,\delta_1)\leq R(\theta,\delta_2)$ for all $\theta\in \Theta$.
+	\item Let $C\subset D^\ast$ is said to be essentially complete, if, given any rule $\delta\in D^\ast$, there exists a rule $\delta_0\in C$ that is as good as $\delta$
+	\end{enumerate}
+\end{definition}
+As an example for a essentially complete class in $D^\ast$, just consider the entire set $D^\ast$.
+
+\begin{theorem}[Minimax Theorem]\label{thm:minimax}
+	Let $C\subset D^\ast$ be an essentially complete class for the game $(\Theta, D, R)$. Assume that there is a topology on $C$ such that
+	\begin{enumerate}
+		\item $C$ is compact and
+		\item $R(\theta,\delta)$ is lower semicontinuous in $\delta\in C$ for all $\theta\in \Theta$. Then the game has a value and the statistician has a minimax strategy.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Let $\overline{V}=\inf_\delta\sup_\theta F(\theta,\delta)$ be the upper value of the game $(\Theta, D, R)$. If $\overline{V}=+\infty$, any rule is a minimax rule for the statistician. If $\overline{V}\neq \infty$, then, since $\sup_\theta R(\theta,\delta)$ is a lower semicontinuous function defined on a compact set, it achieves its infimum at some point $\delta_0\in C$; $\sup_\theta R(\theta,\delta_0)=\overline{V}$, which implies that $\delta_0$ is a minimax strategy.
+	
+	To show that the game has a value, let $M$ be an arbitrary fixed number, $M<\overline{V}$, and let $S_\theta=\{\delta\in C\colon R(\theta,\delta)>M\}$. From the lower semicontinuity of $R$, each set $S_\theta$ is an open subset of $C$. Furthermore, for each $\delta\in C$ there exists a $\theta\in \Theta$ such that $\delta\in S_\theta$, so that $\{S_\theta\}$ forms an open covering of $C$. Since $C$ is compact, there exists a finite subcovering $\{S_{\theta_1},\dots,S_{\theta_k}\}$. Hence\[
+\inf_{\delta\in C}\sup_iR(\theta_i,\delta)\geq M.
+\]
+Now let $\Theta_M=\{\theta_1,\dots,\theta_k\}$ and consider the game $(\Theta_M,C,R)$. Since every lower semicontinuous function on a compact set achieves its minimum, the risk set is bounded below and hence the first part of \autoref{thm:minimax-finite} is applicable. Therefore, this game has a value $V_M\geq M$ and there exists a least favorable distribution $\{p_1,\dots,p_k\}$ on $\Theta_M$; that is,
+\[
+\inf_{\delta\in C}\sum_{i=1}^{k}p_iF(\theta_i,\delta)=V_M.
+\]
+Since $C$ is essentially complete, we have
+\[
+\inf_{\delta\in D^\ast}\sum_{i=1}^{k}p_iF(\theta_i,\delta)=V_M\geq M.
+\]
+
+Since this holds for all $M<\overline{V}$, we find that
+\[
+\underline{V}=\sup_{\tau\in D^\ast}\inf_{\delta\in D^\ast} r(\tau,\delta)\geq \overline{V}.
+\]
+Thus, the game has a value.
+\end{proof}

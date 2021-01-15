@@ -1,0 +1,301 @@
+\chapter{Further Results}\label{chap:further}
+%Kokkendorf \cite{kokkendorff} related the study of rendezvous values to the concept of curvature. 
+%Kulshestha, Sag and Yang studied polygons in M-spaces with non-positive curvature.
+%People investigating M(X,d): Wolf \cite{wolf-energy}, Chad \cite{chad}
+%Pillichshammer calculated g(\R^2,d^2)=3-\sqrt{6}
+%Quasihypermetric spaces have been studied in this context by Nickolas and Wolf \cite{nickolas-wolf:quasihypermetric1,nickolas-wolf:quasihypermetric2,nickolas-wolf:quasihypermetric3} the interested reader is also referred to Chad \cite{chad}.
+
+In this chapter we will give an short overview of connected work that has been done over the years.
+
+Many people have been interested in the topic of Average distance properties in Banach spaces (see for example Wolf \cite{wolf:spheres,wolf:finite-real-banach,wolf:certain-banach,wolf:quasihypermetric-banach}, Lin \cite{lin}, Baronti, Casini and Papini \cite{baronti}, Hinrichs \cite{hinrichs:johns-ellipsoid,hinrichs:banach1,hinrichs:banach2}, García-Vázquez \cite{vazquez:l,vazquez:max-average}, Farkas and Révész \cite{farkas:potential-theory,}). However, in this section, we will only touch on some basic results.
+
+\begin{definition}
+	We say a Banach space $E$ has the average distance property if the statement of the Gross-Stadje-Theorem (\autoref{thm:gross-stadje}) holds for the unit sphere in $E$.
+\end{definition}
+
+Note that the spheres in Banach spaces are compact with respect to the norm of the Banach space only if the dimension of the space is finite. Thus, the statements of Gross \cite{gross} and Stadje \cite{stadje} are not applicable for the infinite dimensional case \cite[vgl.][]{wolf:spheres}.
+
+
+\begin{notation}%following \cite{wolf:spheres}
+	For $n\in \N$, $1\leq p \leq \infty$
+	\begin{enumerate}
+		\item  let $\ell^p(n)$ denote $\R^n$ with the usual $p$-norm,
+		\item let $\ell^p$ denote the sequence space equipped with the $p$-norm,
+		\item let $c_0\subset \ell^p$ denote the subspace of all sequences which are tending to zero,
+		\item $(\cdot\mid\cdot)$ denotes the usual inner product in $\R^n$ and $\ell^2$,
+		\item $e_i$ $(i\geq 1)$ denotes the canonical unit vector in all Banach spaces mentioned above.
+	\end{enumerate}
+We further write $a(E):=a(E,d)$, where $d$ is the metric induced by the norm of the Banach space.
+\end{notation}
+
+%\begin{example}
+%\begin{description}
+%	\item[claim:]
+%For all $n\geq 2$, $a(\ell^(n)1,d)=2-\frac{1}{n}$ and $a(\ell^\infty(n),d)=\frac{3}{2}$.
+%\end{description}
+%
+%For the case of $\ell^1(n)$ let $x\in S$. Since \[
+%|\alpha-1|+|\alpha+1|=1 \quad\text{ for }\quad |\alpha|\leq 1
+%\]
+%
+%\end{example}
+
+Before we give an examples, we need to consider the following lemma from Wolf \cite{wolf:spheres}.
+\begin{lemma}\label{lem:sum-of-norms}
+	Let $x=(\alpha_1,\dots,\alpha_n)\in \ell^1(n), \max\limits_{1\leq i\leq n}|\alpha_i|\leq 1$. Then
+	\[
+	\frac{1}{2n}\sum_{i=1}^{n}\|x-e_i\|+\|x+e_i\|=1+\frac{n-1}{n}\|x\|.
+	\]
+\end{lemma}
+
+\begin{proof}
+	This statement follows form the fact that for all $\alpha\in \R$ with $|\alpha|\leq 1$ we have
+	\[
+	|\alpha-1|+|\alpha+1|=2.
+	\]
+	Thus,
+	\begin{align*}
+		\frac{1}{2n}&\sum_{i=1}^n\|x-e_i\|+\|x+e_i\|=
+		\\
+		=&\frac{1}{2n}(\underset{2}{\underbrace{|x_1-1|+|x_1+1|}}+\underset{2\|x\|-2|x_1|}{\underbrace{2|x_2|+2|x_3|+\cdots+2|x_n|}}
+		\\
+		&\hspace{.5cm}+\underset{2}{\underbrace{|x_2-1|+|x_2+1|}}+\underset{2\|x\|-2|x_2|}{\underbrace{2|x_1|+2|x_3|+\cdots+2|x_n|}}
+		\\
+		&\hspace{4cm}\vdots
+		\\
+		&\hspace{.5cm}+\underset{2}{\underbrace{|x_n-1|+|x_n+1|}}+\underset{2\|x\|-2|x_n|}{\underbrace{2|x_1|+2|x_2|+\cdots+2|x_{n-1}|}})
+		\\
+		=&\frac{2n}{2n}+\frac{1}{n}(n\|x\|-|x_1|-|x_2|-\cdots-|x_n|)
+		\\
+		=&1+\frac{n-1}{n}\|x\| 
+	\end{align*}\qedhere
+\end{proof}
+
+
+We begin with a finite dimensional problem.
+\begin{lemma}\label{lem:l1(n)-l-infinity(n)}
+	For all $n\geq 2$, $a(\ell^{(n)}1)=2-\frac{1}{n}$ and $a(\ell^\infty(n))=\frac{3}{2}$, where $d$ is induced by the respective norms.
+\end{lemma}
+
+\begin{proof}
+	In the case of $\ell^1(n)$ let $x\in \ell^1(n)$ with $\|x\|=1$. Then by above lemma we find\[
+	\frac{1}{2n}\sum_{i=1}^{n}\|x-e_i\|+\|x+e_i\|=2-\frac{1}{n}.
+	\]
+	Thus, by our statements for compact, connected, non-empty Hausdorff spaces, we find $a(\ell^1(n))=2-\frac{1}{n}$.
+	
+	In the case of $\ell^\infty(n)$ let $x=(\alpha_1,\dots,\alpha_n)$ with $\|x\|=1$. Then
+	\[
+	\|x-e_1\|+\|x+e_1\|\leq \max(|\alpha_1-1|,1)+\max(|\alpha_1+1,1)\leq 3.
+	\]
+	Thus, 
+	\[
+	\frac{1}{2}(\|x-e_1\|+\|x+e_1\|)\leq \frac{3}{2}.
+	\]
+	
+	Now let $b_1=(1,1,\dots,1)$ and $b_2=(-1,1,\dots,1)$ and assume without loss of generality that $\alpha_1=1$ or $\alpha_2=1$.
+	If the former is the case then
+	\[
+	\|x-b_1\|+\|x+b_1\|+\|x-b_2\|+\|x+b_2\|\geq |\alpha_2-1|+2+2+|\alpha_2+1|=6,
+	\]
+	and if the latter is the case then
+	\[
+	\|x-b_1\|+\|x+b_1\|+\|x-b_2\|+\|x+b_2\|\geq |\alpha_1-1|+2+|\alpha_1+1|+2=6
+	\]
+	and therefore,
+	\[
+	\frac{1}{4}(\|x-b_1\|+\|x+b_1\|+\|x-b_2\|+\|x+b_2\|)\geq \frac{3}{2}.
+	\]
+	Hence, $a(\ell^\infty(n),d)=\frac{3}{2}$.
+\end{proof}
+
+We will now advance our theory to the infinite dimensional case again following the discussion by Wolf \cite{wolf:spheres}. Recall that we can't apply our Gross-Stadje-Theorem (\autoref{thm:gross-stadje}), since the unit sphere is not compact.
+\begin{theorem}
+	The Hilbert space $\ell^2$ has the average distance property with rendezvous value $a(\ell^2)=\sqrt{2}$. 
+\end{theorem}
+
+\begin{proof}
+	Let $S$ denote the unit sphere in $\ell^2$. Now let $x_1,\dots,x_n\in S$ and choose $x\in S$ such that $x$ is in the orthogonal complement of the space spanned by $x_1,\dots,x_n$. Then
+	\[
+	\frac{1}{n}\sum_{i=1}^{n}\|x_i-x\|=\sqrt{2},
+	\]
+	since 
+	\[
+	\|x_i-x\|=\sqrt{(x_i-x\mid x_i-x)}=\sqrt{(x\mid x)-(x_i\mid x)-(x\mid x_i)+(x,x)}=\sqrt{2}
+	\]
+	
+	In order to show that this is in fact the rendezvous value, we need to show uniqueness. Therefore, let $\alpha$ be a positive real number with the desired property. Choose $x_1\in S$. Then similar to lemma \ref{lem:sum-of-norms}
+	\[
+	\|x_1-x\|+\|x_1+x\|\leq \sqrt{2}\sqrt{\|x_1-x\|^2+\|x_1+x\|^2}=2\sqrt{2}.
+	\]
+	for all $x\in S$ we have $\alpha\leq \sqrt{2}$.
+	
+	To verity the other inequality, let $x\in S$. Then
+	\begin{align*}
+	\frac{1}{n}\sum_{i=1}^n\|x-e_i\|&=\frac{\sqrt{2}}{n}\sum_{i=1}^{n}\sqrt{1-(x\mid e_i)}\geq\frac{\sqrt{2}}{n}\sum_{i=1}^n\sqrt{1-|(x\mid e_i)|}
+	\\
+	&\geq\frac{\sqrt{2}}{n}\sum_{i=1}^n(1-|(x\mid e_i)|)\geq \sqrt{2}-\frac{\sqrt{2}}{\sqrt{n}}
+	\end{align*}
+	for all $n\in \N$ and thus $\alpha\geq\sqrt{2}$.
+\end{proof}
+
+We will now see that not all Banach spaces have the average distance property as described by Wolf \cite{wolf:spheres}.
+\begin{theorem}
+	The Banach spaces $c_0$ and $\ell^1$ do not have the average distance property.
+\end{theorem}
+
+\begin{proof}
+	We begin with the space $c_0$. We will prove the statement by showing that the rendezvous value is not unique. For $k\geq 1$ let $P_k$ denote the canonical projection onto the subspace spanned by $e_1,\dots,e_k$.
+	
+	Let $x_1,\dots,x_n\in S$ and choose $k_0\geq 2$ such that $\|P_{k_0}x_i\|=1$ for $i\in \{1,\dots,n\}$. We can now apply our result for $\ell^\infty(k_0)$ from lemma \ref{lem:l1(n)-l-infinity(n)} to see that there exists $x\in S$ such that $(E-P_{k_0})x=0$ 
+	 and $\frac{1}{n}\sum_{i=1}^{n}\|P_{k_0}x_i-x\|=\frac{3}{2}$ and therefore
+	 \[
+	 \frac{1}{n}\sum_{i=1}^n\|x_i-x\|\geq \frac{1}{n}\sum_{i=1}^n\|P_{k_0}(x_i-x)\|=\frac{1}{n}\sum_{i=1}^n\|P_{k_0}x_i-x\|=\frac{3}{2}.
+	 \]
+	 
+	 Now, let $\varepsilon>0$ and choose $k_1\in \N$ such that
+	 \[
+	 |(x_i\mid e_{k_1})|\leq \varepsilon\quad \text{ for }\quad i=1,2,\dots, n.
+	 \]
+	 Then 
+	\[
+	\frac{1}{n}\sum_{i=1}^n\|x_i-e_{k_1}\|\leq \frac{1}{n}\sum_{i=1}^n\max(|(x_i\mid e_{k_1})-1|,1)<1+\varepsilon.
+	\]
+	Thus, by Intermediate Value Theorem, we see that every real number in the interval $(1,\frac{3}{2}]$ satisfies the property of the rendezvous value, which contradicts the uniqueness.
+	
+	Now consider the case of the space $\ell^1$. Let $x=(\alpha_1,\alpha_2,\dots)\in S$. with lemma \ref{lem:sum-of-norms} we have
+	\[
+	\frac{1}{2n}\sum_{i=1}^n \|x-e_i\|+\|x+e_i\|=2-\frac{1}{n}\sum_{i=1}^n|\alpha_i|\geq 2-\frac{1}{n} \quad \forall n\in \N
+	\] 
+	
+	Thus, if there was a constant with the property of the rendezvous constant, it would have to be equal to 2. However, that is not possible. To see this, consider $x_1=(\beta_1,\beta_2,\dots)\in S$ with $\beta_i>0$ for $i\in \N$. Under our assumption, there would have to be $x=(\alpha_1,\alpha_2,\dots)\in S$ with $\frac{1}{2}(\|x-x_1\|+\|x+x_1\|)=2$. Then $\|x-x_1\|=\|x+x_1\|=\|x\|+\|x_1\|$ and therefore $|\alpha_i-\beta_i|=|\alpha_i+\beta_i|=|\alpha_i|+|\beta_i|$ for $i\in \N$. Since $\beta_i\geq 0$ for all $i\in \N$ we have $\alpha_i=0$ for all $i\in \N$, which is a contradiction.
+\end{proof}
+
+Note that we just showed that a Banach space can have no, multiple or one unique real number satisfying the property of a rendezvous value.
+
+\begin{theorem}\cite{wolf:spheres}
+	The Banach space $\ell^\infty$ has the average distance property with rendezvous number $a(\ell^\infty)=\frac{3}{2}$.
+\end{theorem}
+
+\begin{proof} 
+		Let $x_1,\dots,x_n\in S$ and $P_k$ as before. Without loss of generality we can assume that the elements are labeled in a way such that there is a $s$ such that elements in the subset $\{x_1,\dots,x_s\}$ satisfy $\|P_{k_0}\|=1$ for all $1\leq i\leq s$ and some $k_0\geq 2$.
+		
+		Similar to the previous proof we may now apply our result from Lemma \ref{lem:l1(n)-l-infinity(n)} to find the existence of a $y\in S$ with $(E-P_{k_0})y=0$ and $\frac{1}{s}\sum_{i=1}^{s}\|P_{k_0}x_i-y\|=\frac{3}{2}$. For the other elements, choose $k_0<a_{s+1}<a_{s+2}<\dots<a_n$ with $|(x_i\mid e_{a_i})|\geq\frac{1}{2}$. Now, let $x=y+\sum_{i=s+1}^n-\mathrm{sgn}(x_i\mid e_{a_i})e_{a_i}$. By construction, $x\in S$ and $P_{k_0}x=y$. Thus,
+		\begin{align*}
+				\frac{1}{n}\sum_{i=1}^n\|x_i-x\|\geq&\frac{1}{n}\left(\sum_{i=1}^s\|P_{k_0}x_i-y\|+\sum_{i=s+1}^n\|x_i-x\|\right)
+				\\
+				\geq& \frac{1}{n}\left(\frac{3}{2}s+\sum_{i=s+1}^n|(x_i-x\mid e_{a_i})|\right)
+				\\
+				\geq& \frac{s}{n}\cdot \frac{3}{2}+\frac{n-s}{n}\cdot \frac{3}{2}=\frac{3}{2}.
+		\end{align*}
+		
+		To verify the other inequality, we only need to see that
+		\[
+		\min\left(\frac{1}{n}\sum_{i=1}^n\|d_i-e_1\|,\frac{1}{n}\sum_{i=1}^n\|x_i+e_1\|\right)\leq \frac{3}{2}.
+		\]
+		
+		Intermediate Value Theorem guarantees once more that $\frac{3}{2}$ actually satisfies the desired properties. The proof of uniqueness is analogous to that of lemma \ref{lem:l1(n)-l-infinity(n)} with $b_1=\sum_{i=1}^\infty e_i, b_2=-e_1+\sum_{i=2}^\infty e_i$.
+%	Let $x_1,\dots,x_n\in S$. As before let $P_k$ denote the canonical projection onto the subspace generated by $e_1,\dots,e_{k}$ for $k\geq 1$. Without loss of generality let $\{x_1,\dots,d_s\}$ be the subset of $\{x_1,\dots,x_n\}$ such that the norm of $x_1,\dots,x_s$ is attained at some coordinate. Therefore $\|P_{k_0}x_i\|=1, i=1,2,\dots,s$ for some $k_0\geq 2$.
+%	
+%	By lemma \ref{lem:l1(n)-l-infinity(n)} there is a $y\in S$ such that $(E-P_{k_0})y=0$ and $\frac{1}{s}\sum_{i=1}^s\|P_{k_0}x_i-y\|=\frac{3}{2}$. For $x_{s+1},\dots,x_n$ choose $k_0<a_{s+1}<a_{s+2}<\dots<a_n$ such that $|(x_i\mid e_{a_i})|\geq \frac{1}{2}$ for $i=s+1, s+2,\dots, n$. Let $x=y+\sum_{i=s+1}^n-\mathrm{sgn}(x_i\mid e_{a_i})e_{a_i}$. Clearly $x\in S$ and $P_{k_0}x=y$ and therefore:
+%	\begin{align*}
+%		\frac{1}{n}\sum_{i=1}^n\|x_i-x\|\geq&\frac{1}{n}\left(\sum_{i=1}^s\|P_{k_0}x_i-y\|+\sum_{i=s+1}^n\|x_i-x\|\right)
+%		\\
+%		\geq& \frac{1}{n}\left(\frac{3}{2}s+\sum_{i=s+1}^n|(x_i-x\mid e_{a_i})|\right)
+%		\\
+%		\geq& \frac{s}{n}\cdot \frac{3}{2}+\frac{n-s}{n}\cdot \frac{3}{2}=\frac{3}{2}.
+%	\end{align*}
+%	
+%	On the other hand, it is easy to see, that 
+%	\[
+%	\min\left(\frac{1}{n}\sum_{i=1}^{n}\|x_i-e_1\|,\frac{1}{n}\sum_{i=1}^{n}\|x_i+e_1\|\right)\leq \frac{3}{2}.
+%	\]
+%	The Intermediate Value Theorem now guarantees, that $\frac{3}{2}$ has the desired property and uniqueness follows similar to lemma \ref{lem:l1(n)-l-infinity(n)} with $b_1=\sum_{i=1}^\infty e_i, b_2=-e_1+\sum_{i=2}^\infty e_i$.
+\end{proof}
+
+This result showcases that it is not necessary for a Banach space to be separable in order to have the average distance property.
+
+%The following results are due to Lin \cite{lin}.
+%\begin{lemma}\label{lem:lin-lem1}
+%	For any $1\leq p <\infty$, let $\{e_1,e_2,\dots \}$ be the natural basis of $\ell^p$. Then for any $0<\varepsilon<1$, there is $N\in \N$ such that for any $x\in \ell^p$ with $\|x\|=1$, we have\[
+%	\sqrt[p]{2}-\varepsilon<\frac{1}{N}\sum_{i=1}^N\|e_i-x\|<\sqrt[p]{2}+\varepsilon.
+%	\]
+%	So if $\ell^p$ has the average distance property, then $a(\ell^p)=\sqrt[p]{2}$.
+%\end{lemma}
+%\begin{proof}
+%	Let $0<\varepsilon<1$, then there exists $\delta>0$ such that
+%	\[
+%	\delta^p\leq \frac{\varepsilon}{4}\quad\text{ and }\quad 1-\frac{\varepsilon}{4}\leq (1-\delta)^p<(1+\delta)^p\leq 1+\frac{\varepsilon}{4}.
+%	\]
+%	Let $n$ be any natural number such that $n\geq \frac{1}{\delta^p}$. We will show that if $N>\frac{8n}{\varepsilon}$ then we have for any $x=\sum_{i=1}^\infty a_ie_i\in\ell^p$, with $\|x\|=1$,
+%	\[
+%	\sqrt[p]{2}-\varepsilon\leq \frac{1}{N}\sum_{i=1}^N\|e_i-x\|\leq \sqrt[p]{2}+\varepsilon.
+%	\]
+%	
+%	Since $\sum_{i=1}^\infty |a_i|^p=1$ and $n\delta^p\geq 1$, we have for $D:=\{i\leq N:|a_i|\geq \delta\}$ that $\# D\leq n$. For any $i\not\in D$ we have
+%	\[
+%	2-\frac{\varepsilon}{2}\leq 1-\delta^p+(1-\delta)^p\leq\|x-e_i\|^p\leq 1+(1+\delta)^p\leq 2+\frac{\varepsilon}{2},
+%	\]
+%	and 
+%	\[
+%	\sqrt[p]{2}-\frac{\varepsilon}{2}\leq \|e_i-x\|\leq \sqrt[p]{2}+\frac{\varepsilon}{2}.
+%	\]
+%	
+%	Therefore,
+%	\begin{align*}
+%		\sqrt[p]{2}-\varepsilon&\leq\left(1-\frac{\varepsilon}{8}\right)\left(\sqrt[p]{2}-\frac{\varepsilon}{2}\right)
+%		\\
+%		&\leq \frac{N-n}{N}\cdot\frac{1}{N-n}\sum_{i\leq N,i\not\in D}\|e_i-x\|
+%		\\
+%		&\leq \frac{1}{N}\sum_{i=1}^N\|e_i-x\|
+%		\\
+%		&\leq \frac{2n}{N}+\frac{(N-n)\left(\sqrt[p]{2}+\frac{\varepsilon}{2}\right)}{N}
+%		\\
+%		&\leq \sqrt[p]{2}+\varepsilon.
+%	\end{align*}
+%\end{proof}
+%
+%\begin{lemma}\label{lem:lin-lem3}
+%	Suppose that $1\leq p<2$. For any two unit vectors $x,y\in L_p$,
+%	\[
+%	\frac{\|x+y\|}{2}+\frac{\|x-y\|}{2}\leq\sqrt[p]{2},
+%	\]
+%	and equality hold if and only if $x\cdot y=0$ almost everywhere.
+%\end{lemma}
+%
+%\begin{proof}
+%	Firstly, we need to verify the following claim:
+%	\begin{quotation}
+%		\textit{Claim:} For $1\leq p <2$ and $x,y\in L_p$ we have $\|x+y\|^p+\|x-y\|^p\leq 2(\|x\|^p+\|y\|^p)=4$ and equality holds if and only if $\|x+y\|^p=\|x-y\|^p=2$ if and only if $x\cdot y=0$ almost everywhere.
+%	\end{quotation}%todo ???
+%
+%%Recall the Hölder inequality, that is provided $f\in L^p$ and $g\in L^q$ with $\frac{1}{p}+\frac{1}{q}=1$, then $\|fg\|_1\leq\|f\|_p\cdot\|g\|_q$.
+%%
+%%For $2<m<\infty$, apply the holder inequality with exponents $\frac{m}{2}$ and $\frac{m}{(m-2)}$ to $x^2+y^2$. Then
+%%\[
+%%\|x^2+y^2\|_1\leq \|x^2+y^2\|_{\frac{m}{2}}
+%%\]
+%
+%Let $t=\|x-y\|^p$. Then $\|x+y\|^p\leq 4-t$. This implies
+%\[
+%\frac{\|x+y\|}{2}+\frac{\|x-y\|}{2}\leq\frac{2^{\frac{1}{p}+1}}{2}=\sqrt[p]{2}
+%\]
+%and equality holds if and only if $\|x+y\|^p=\|x-y\|^p$ if and only if $x\cdot y=0$ almost everywhere.
+%\end{proof}
+
+Lin \cite{lin} found that $L^p(0,1)$ and $\ell^p$ do not have the average distance property if $1\leq p<2$. Later Hinrichs first showed in \cite{hinrichs:banach1}that $L^p(0,1)$ and $\ell^p$ do not have the average distance property for $3\leq p<\infty$ and later showed in joint work with Wenzel \cite{hinrichs:banach2} that the same holds for $2<p<\infty$, thereby completing the study of average distance properties of $L^p$- and $\ell^p$-spaces.
+
+Lin \cite{lin} further found that if $K$ is a normed space, then $C(K)$ has the average distance property if and only if $K$ contains at least one isolated point, in which case the rendezvous constant is equal to $\frac{3}{2}$.
+
+García-Vázquez and Villa \cite{vazquez:l} were able to compute the rendezvous values of $\ell^\infty(n)(\C)$ and $\ell^\infty(\C)$ to be $\frac{1}{3}+\frac{2\sqrt{3}}{\pi}$ and furthermore expressed the rendezvous value of $\ell^1(n)$ in terms of the complete elliptic integral function.
+
+Wolf \cite{wolf:finite-real-banach} found that for real $N$-dimensional $(N\geq 2)$ Banach spaces $X$ with 1-unconditional basis, the inequality $a(X)\leq 2-\frac{1}{N}$ holds. In \cite{wolf:quasihypermetric-banach} he further showed that the same bound holds for real quasihypermetric Banach spaces of finite dimension. Later Hinrichs \cite{hinrichs:johns-ellipsoid} was able to show that the restriction to qusihypermetric Banach spaces is not necessary, using methods involving the John's Ellipsoid. García-Vázquez and Villa \cite{vazquez:max-average} showed that this can be generalized to the complex case if the dimension is greater than 3.
+
+Kokkendorf \cite{kokkendorff} related the study of rendezvous values to the concept of curvature. And Kulshestha, Sag and Yang \cite{kulshestha:polygons} studied polygons in M-spaces with non-positive curvature. (A $M$-space is a metric space in which there exists for each pair of distinct points $x,y\in X$ and all $\alpha\in (0,1)$ a point $z(\alpha)\in X$ such that $d(x,z(\alpha))=\alpha d(x,y)$ and $d(y,\alpha(z))=(1-\alpha)d(x,y)$.)
+
+A concept which is related to the rendezvous value of a topological space is that of average distances, more precisely studying the constants
+\begin{align*}
+	M(X,d):=&\sup\frac{1}{n^2}\sum_{i=1}^n\sum_{j=1}^nd(x_i,x_j)=\sup_{\mu\in\M^1}\int_X\int_X d(x,y)\mu(\dx)\mu(\dy)\\
+	\overline{M}(X,d):=&\sup
+	\sum_{i=1}^n\sum_{j=1}^nw_iw_jd(x_i,x_j),
+\end{align*}
+where for the former the supremum is taken over all $n\in\N$ and $x_1,\dots,x_n\in X$ and in the latter case over all $n\in \N$, $x_1,\dots,x_n$ and $w_1,\dots, w_n$ with $\sum_{i=1}^nw_i=1$. These values have been of particular interest for spaces with the quasihypermetric condition. The interested reader is referred to the work of Nickolas and Wolf \cite{nickolas-wolf:quasihypermetric1,nickolas-wolf:quasihypermetric2,nickolas-wolf:quasihypermetric3} as well as the thesis by Chad \cite{chad}. 

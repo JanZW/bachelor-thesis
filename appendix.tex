@@ -1,0 +1,105 @@
+\begin{appendices}
+\newcommand{\scrS}{\mathscr{S}}
+\chapter{Technical Results}
+	
+	In this chapter, the reader can find the more technical results, which were necessary to prove the desired theorems but of no further interest at the time. We start with preliminary results that was used in the proof of the  Banach-Alaoglu-Theorem.
+	
+	\begin{definition}
+		Let $(X,\tau)$ be a topological space. We say a collection $\scrS$ of open subsets is called a \emph{subbase} of the topology $\tau$ if the collection of all finite intersections of members of $\scrS$ forms a base for $\tau$. A \emph{$\scrS$-cover} of $X$ is a cover of $X$ whose elements are all contained in $\scrS$.
+	\end{definition}
+
+Compactness is usually defined as the property that every cover has a finite subcollection that is still a cover. The following statement \cite[see][]{rudin:functional-analysis} shows that it is sufficient to verify this for $\scrS$-covers.
+
+	\begin{theorem}[Alexander's Subbase Theorem]\label{thm:subbase}
+		If $\scrS$ is a subbase for the topology of a space $X$ and if every $\scrS$-cover of $X$ has a finite subcover, then $X$ is compact.
+	\end{theorem}
+\begin{proof}
+	Assume for a contradiction that $X$ is not compact. We will show that $X$ has a $\scrS$-cover $\tilde{\Gamma}$ that does not have a finite subcover.
+	
+	We will denote the collection of all subcovers  of $X$ that do not have a finite subcover with $\mathfrak{P}$. Since $X$ is assumed not to be compact, $\mathfrak{P}\neq \emptyset$. The inclusion relation induces a partial order on $\mathfrak{P}$. Let $\Omega$ denote the maximal\footnote{To see that such exists we need to apply Zorn's Lemma.
+	} totally ordered subcollection of $\mathfrak{P}$ and $\Gamma$ shall be defined to be the union of all members of $\Omega$.
+	\begin{myassertion}\label{ass:open-cover}
+		$\Gamma$ is an open cover of $X$.
+	\end{myassertion}
+	\begin{myassertion}\label{ass:no-finite-cover}
+		$\Gamma$ has no finite subcover, but
+	\end{myassertion}
+	\begin{myassertion}\label{ass:finite-subcover}
+		$\Gamma\cup\{V\}$ has a finite subcover for every open $V\not\in \Gamma$.
+	\end{myassertion}
+	
+Assertion 1 is obvious by construction of $\Gamma$. We defined $\Omega$ to be totally ordered by inclusion. This implies that any subcover of $\Gamma$ is already contained in some element of $\Omega$. Therefore $\Gamma$ cannot have a finite subcover, proving Assertion 2.
+Assertion 3 is a direct consequence of the maximality of $\Omega$.	
+
+Now, consider $\tilde{\Gamma}:=\Gamma\cap\scrS$. Assertion 2 provides that $\tilde{\Gamma}$ cannot have a finite subcover. 
+Suppose $\tilde{\Gamma}$ is not a cover of $X$, i.e. there exists a $x\in X\setminus\tilde{\Gamma}$. Assertion 1 tells us that there is some $W\in \Gamma$ such that $x\in W$. By the subbase property of $\scrS$, we know that there are sets $V_1,\dots,V_n\in \scrS$ such that $x\in\bigcap\limits_{i=1}^n V_i\subset W$. Since $x\in V_i$ for all $i\in\{1,\dots,n\}$, we conclude that $V_i\not\in\Gamma$ for all $i\in\{1,\dots,n\}$.
+
+
+Applying Assertion \ref{ass:finite-subcover} we find that there are sets $Y_1,\dots,Y_n$, each finite union of members of $\Gamma$ such that $X=V_i\cup Y_i$ for all $1\leq i\leq n$, implying
+\[
+X=Y_1\cup\dots\cup Y_n\cup \bigcap\limits_{i=1}^nV_i\subset Y_1\cup\dots\cup Y_n\cup W.
+\]
+This is a contradiction to Assertion \ref{ass:no-finite-cover}.
+\end{proof}
+
+
+It is well known that the caresian product of two compact spaces is compact with respect to the usual product topology. The following theorem \cite[see][]{rudin:functional-analysis} states that this is the case for products of arbitrarily many compact spaces.
+\begin{theorem}[Tychonoff's Theorem]\label{thm:tychonoff}
+	Let $X_\alpha$ be a collection of arbitrary many nonempty compact spaces and let $X$ be the cartesian product of all $X_\alpha$. Then $X$ is compact.
+\end{theorem}
+
+\begin{proof}
+	Let $\pi_\alpha: X\to X_\alpha$ be the projection onto the $X_\alpha$-coordinate. The topology on $X$ is defined as the initial topology with respect to $(\pi_\alpha)_\alpha$, i.e. the coarsest under which all $\pi_\alpha$ are continuous.
+	
+	Consider the set $W_\alpha:=\{V_\alpha\colon V_\alpha\subset X_\alpha \text{ open}\}$ of open subsets. We define $\scrS_\alpha$ to be the collection of all sets $\pi_\alpha^{-1}(V_\alpha)$, where $V_\alpha\in W_\alpha$. Now, let $\scrS$ denote the union of all the $\scrS_\alpha$, then $\scrS$ is a subbase of the topology. 
+	
+	Let $\Gamma$ be any given $\scrS$-cover of X. Define $\Gamma_\alpha=\Gamma\cap \scrS_\alpha$. Assume for a contradiction that $\Gamma_\alpha$ does not cover $X$ for any choice of $\alpha$. Then, for each $\alpha$ there is a point $x_\alpha$ in $X_\alpha$ such that $\Gamma_\alpha$ covers no point of the set $\pi_\alpha^{-1}(x_\alpha)$, and if $x\in X$ is chosen so that $\pi_\alpha(x)=x_\alpha$, then $x$ is not covered by $\Gamma$. However, $\Gamma$ is a cover of $X$, thus at least one of the $\Gamma_\alpha$ has to be a cover of $X$. Since $X_\alpha$ is compact, there is a finite subcollection of $\Gamma_\alpha$, that covers $X$. Since $\Gamma_\alpha\subset\Gamma$, we get that $\Gamma$ has a finite subcover. Applying Alexander's Subbase Theorem (\autoref{thm:subbase}) yields, that $X$ is compact.
+\end{proof}
+
+
+The following two statements are fundamental theorems of functional analysis. A detailed proof can be found in Werner \cite{werner:funkana}.
+\begin{theorem}[Hahn-Banach Theorem]
+	Let $X$ be a complex vector space and let $U$ be a sub vector space of $X$. Furthermore, let $p:X\to \R$ be sublinear and $\ell:U\to \C$ linear with
+	\[
+	\mathrm{Re}\ell(x)\leq p(x)\quad \forall x\in U.
+	\]
+	Then there exists a linear extension $L:X\to \C, L\mid_U=\ell$ with
+	\[
+	\mathrm{Re}L(x)\leq p(x)\quad \forall x\in X.
+	\]
+\end{theorem}
+
+
+\begin{corollary}[Banach separation theorem]\label{thm:banach-separation}
+	Let $X$ be a normed space, $V_1,V_2\subset X$ convex and $V_1$ open. Let $V_1\cap V_2=\emptyset$. Then there exists $x^\prime\in X^\prime$ with\[
+	\mathrm{Re}x^\prime(v_1)<\mathrm{Re}x^\prime(v_2)\quad \forall v_1\in V_1,v_2\in V_2.
+	\]
+\end{corollary}
+
+\chapter{Sourcecode}\label{sourcecode}
+The following program computes the rendezvous value of $n$-gons with unit diameter. It was created using Python 3.7. Computations with increasing $n$ indicate that the rendezvous value of $n$-gons tends to that of a circle, as expected.
+\begin{verbatim}
+import math as m
+n=3
+a_prev=0
+while n<500:
+    n=n+1
+    k=0
+    a=0
+    while k<n:
+        k+=1
+        if n%2==0:
+            a+=1/(2*n)*m.sqrt(1.5+0.5*m.cos(2*m.pi/n)-m.cos(2*k*m.pi/n) \
+                -m.cos(2*(k-1)*m.pi/n))
+        else:
+            a+=1/(n)*m.sqrt((1.5+0.5*m.cos(2*m.pi/n)-m.cos(2*k*m.pi/n) \
+                -m.cos(2*(k-1)*m.pi/n))/(2-2*m.cos((n-1)*m.pi/n)))
+    adjustment=a-a_prev
+    a_prev=a
+    error=(2/m.pi)-a
+    print("Result (n,a):", n,a, "\tadjustment:",\
+        adjustment,"\terror:",error)
+\end{verbatim}
+
+The computations show for example that if we approximate the circle with radius $\frac{1}{2}$, then the error for the rendezvous value is approximately $5.23576764943634e-06$.
+\end{appendices}

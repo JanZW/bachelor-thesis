@@ -1,0 +1,103 @@
+\documentclass{scrartcl}
+\usepackage{amsmath, amsthm}
+\usepackage[english]{babel}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+\begin{document}
+	\begin{definition}
+		A Game consists of a triple $(\Theta,\mathcal{A},L(\theta,a))$ where $\Theta$ is a nonempty set of possible states of nature, $\mathcal{A}$ is a nonempty set of available actions and $L: \Theta\times \mathcal{A}\to \mathbf{R}: (\theta,a)\mapsto L(\theta,a)$ is the loss function.
+	\end{definition}
+
+\begin{definition}
+	A statistical decision problem or statistical game is a game $(\Theta,\mathcal{A},L)$ coupled with an experiment involving a random observable $X$ whose distribution $P_\theta$ depends on the state $\theta\in\Theta$ chosen by nature. On the basis of the outcome of the experiment $X=x$, the statistician chooses an action $d(x)\in \mathcal{A}$. Such a function $d$, which maps the sample space $\mathcal{X}$ into $\mathcal{A}$, is an elementary strategy for the statistician in this situation. The loss is now the random quantity $L(\theta,d(X))$. The expected value of $L(\theta,d(X))$ when $\theta$ is the state of nature is called the risk function
+	\[
+	R(\theta,d)=E_\theta L(\theta,d(X))=\int L(\theta,d(x))dP_\Theta(x)	
+	\]
+	and represents the average loss to the statistician when the true state of nature is $\theta$ and the statistician chooses the function $d$.
+\end{definition}
+
+\begin{definition}
+	Any function $d(x)$ that maps the sample space $\mathcal{X}$ into $\mathcal{A}$ is called a nonrandomized decision rule or a nonrandomized decision function, provided the risk function $R(\theta,d)$ exists and is finite for all $\theta\in \Theta$. The class of all nonrandomized decision rules is denoted by $D$.
+\end{definition}
+
+Replace $(\Theta,\mathcal{A},L)$ by $(\Theta,D,R)$ where the underlying structure of $D$ and $R$ rely on $\mathcal{A}, L$ and the distribution on $X$.
+
+\begin{definition}
+	Any probability distribution $\delta$ on the space of nonrandomized decision functions, $D$, is called a randomized decision fuction or a randomized decision rule, provided the risk function
+	\[
+	R(\theta,\delta)=ER(\theta,Z)
+	\]
+	where $Z$ is a random variable with values in $D$, exists and is finite for all $\theta\in \Theta$. The space of all reandomized decision rules is denoted by $D^\ast$. The distribution on $\Theta$ is called prior distribution.
+\end{definition}
+
+Bayes risk of a descision rule $\delta$ with respect ot a prior distribution $\tau$, namely
+\[
+r(\tau,\delta)=ER(T,\delta)
+\]
+where $T$ is a random variable over $\Theta$ having distribution $\tau$. The space of distributions on $\Theta$ is denoted by $\Theta^\ast$.
+
+
+\begin{definition}
+	A decision rule $\delta_0$ is said to be minimax if\[
+	\sup_\Theta R(\theta,\delta_0)=\inf_{\delta\in \Theta^\ast}\sup_\theta R(\theta,\delta)
+	\]
+	this value is called minimax or upper value.
+\end{definition}
+
+A distribution $\tau_0\in \Theta^\ast$ is said to be least favorable if 
+\[
+\inf_\delta r(\tau_0,\delta)=\sup_\tau\inf_\delta r(\tau,\delta)
+\]
+this value is called maximin or lower value.
+
+
+Suppose that $\Theta$ consists of $k$ points $\theta_1,\dots,\theta_k$ and consider the set $S$ to be called the risk set, contained in $k$-dimensional euclidean space, $E_k$, of points of the form 
+\[
+(R(\theta_1,\delta),\dots,R(\theta_k,\delta))
+\]
+where $\delta$ ranges through $D^\ast$.
+Formally:
+\[
+S=\{(y_1,\dots,y_k):\text{for some }\delta\in D^\ast, y_j=R(\theta_j,\delta) \text{for }j=1,\dots,k\}
+\]
+
+\begin{theorem}(Minimax Theorem for finite games)
+	If for a given decision problem $(\Theta,D,R)$ with finite $\Theta=\{\theta_1,\dots,\theta_k\}$ the risk set is bounded below, then
+	\[
+	\inf_{\delta\in D^\ast}\sup_{\tau\in \Theta^\ast}r(\tau,\delta)=\sup_{\tau\in D^\ast}\inf_{\delta\in D^\ast} r(\tau,\delta)=V
+	\]
+	and there exists a least favorable distribution. [\dots]
+\end{theorem}
+\begin{proof}
+	It is always true that $\underline{V}\leq \overline{V}$. It is sufficient to show $\overline{V}\leq \underline{V}$.
+	
+	Let $V$ denote the supremum of $\{\alpha:Q_{\alpha\mathbf{1}}\cap S=\emptyset\}$, where $\mathbf{1}=(1,\dots,1)$. Then for every $n$ there exists a rule $\delta_n$ such that
+	\[
+	R(\theta_j,\delta_n)\leq V+\frac{1}{n}
+	\]
+	for all $j$.
+	
+	Hence $r(\tau,\delta_n)\leq V+\frac{1}{n}$ for all $\tau$ and $\sup_\tau r(\tau,\delta_n)\leq V+\frac{1}{n}$ for all $n$, implying that $\overline{V}\leq V$. Now show $V\leq \underline{V}$
+	
+	$Q_{V\mathbf{1}}^\circ$ and $S$ are disjoint convex sets, so there must be a hyperplane $p^tx=c$, which separates $Q_{V\mathbf{1}}^\circ$ and $S$, say $p^tx\geq c$ for $x\in S$ and $p^tx\leq c$ for $x\in Q_{V\mathbf{1}}^\circ$.
+	
+	Each coordinate $p_j$ must be nonnegative, for if $p_j<0$ for some $j$ we may take $x_j\to -\infty$; the other coordinates of $x$ are fixed, $x\in Q_{V\mathbf{1}}^\circ$ s.t. $p^tx\to +\infty$, contradicting $p^tx\leq c$. We may also take $\sum_j p_j=1$. Thus $p$ may be taken as a prior distribution, $\tau_0$, for nature.
+	
+	Because $p^tx\leq c$ for all $x\in Q_{V\mathbf{1}}^\circ$, letting $x\to V\mathbf{1}$ implies $V\leq c$. Thus for all $\delta$
+	\[
+	r(\tau_0,\delta)=\sum_j p_jR(\theta_j,\delta)\geq c\geq V
+	\]
+	Therefore,
+	\[
+	\underline{V}=\sup_\tau\inf_\delta r(\tau,\delta)\geq\inf_\delta r(\tau_0,\delta)\geq V
+	\]
+	also $\tau_0$ is least favorable.
+	\end{proof}
+
+
+
+\end{document}

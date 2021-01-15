@@ -1,0 +1,72 @@
+\documentclass[12pt, bachelor, sepnum, expert]{ur-thesis}
+\usepackage{blindtext}
+\bibliography{literatur.bib}
+\thmnum{chapter}
+\begin{document}\setthtitle{Titel der Arbeit}
+%	\addzweitgutachter{asdklfj}
+	\setaddress{Erzgebirgstr. 7\\93164 Laaber}
+	\setabgdatum{22.04.3000}
+	\setbearbzeit{29.05.2000}{14.03.2001}
+	\setgutachter{friedl}
+	\defaulttitlepage
+
+	
+	
+	\begin{zusammenfassung}
+	Test
+	Dann gibt es auch verschiedene Abs\"atze und manchmal macht der ganze Text, wie in diesem Beispiel, keinen Sinn. Wir betrachten noch die Abbildungen
+	und 
+	sowie die Tabelle \thtitle
+	
+	
+	
+	\end{zusammenfassung}
+		\tableofcontents
+	\begin{lemma}
+		Aussage
+	\end{lemma}
+
+\begin{satz}
+	Aussage
+	
+	%\iftitle
+	\ifx\thtitle\relax
+		Titel
+	\else
+	 	kein Titel
+	\fi
+\end{satz}
+
+\begin{bemerkung}
+	Aussage \parencite{dehnen2009}
+\end{bemerkung}
+
+\begin{definition}
+	Definition
+\end{definition}
+
+
+%\begin{vartheorem}{öalskdjf}
+%	äldkjfalskdjfaösldkfj
+%\end{vartheorem}
+
+\begin{proof}
+	Beweis
+\end{proof}
+
+\begin{theorem}
+	Theorem
+\end{theorem}
+
+\begin{vartheorem}{plain}{VariableTheorem}
+	Inhalt...
+\end{vartheorem}
+
+
+\begin{vartheorem}{plain}{VariableTheorem}
+	Inhalt...
+\end{vartheorem}
+
+
+\blinddocument
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass[expert, english]{ur-thesis}
+\setname{Jan Philipp Zwank}
+\setabgdatum{19.09.2019}
+\setgutachter{Prof. Dr. Stefan Friedl}
+\setthtitle{The Rendezvous Value of Topological Spaces}
+\setbearbzeit{19.06.2019}{19.09.2019}
+\setaddress{Jan-Philipp.Zwank@stud.uni-regensburg.de}
+\setmatrikelnummer{1752455}
+\setcounter{biburlnumpenalty}{9000}
+\bibliography{Rendezvous-value.bib}
+\usepackage{hyperref,scrlayer-scrpage, enumitem,tikz}
+\usepackage{amsfonts, amstext, amsmath, amscd, amssymb, mathrsfs}
+\usepackage[title,titletoc]{appendix}
+\usetikzlibrary{patterns}
+
+%\usepackage[british]{babel}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\dy}{\mathrm{d}y}
+
+\newcounter{assertion}
+\theoremstyle{remark}
+\newtheorem{myassertion}[assertion]{Assertion}
+\newtheorem*{myassertion*}{Assertion}
+
+\automark[section]{chapter}
+
+
+\alteid{Ich habe die Arbeit selbständig verfasst, keine als die angegebenen Quellen und Hilfsmittel benutzt und bisher keiner anderen Prüfungsbehörde vorgelegt. Außerdem bestätige ich hiermit, dass die vorgelegten Druckexemplare und die vorgelegte elektronische Version der Arbeit identisch sind und dass ich von den in \S{} 27 Abs. 6 vorgesehenen Rechtsfolgen Kenntnis habe.}
+
+
+\newif\ifmyincludeonly
+\newcommand{\myincludeonly}[1]{\includeonly{#1}\myincludeonlytrue}
+%\myincludeonly{computations}
+
+\begin{document}
+
+\include{titlepage}
+\include{abstract}
+
+\ifmyincludeonly\relax
+\else
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+\fi
+
+\include{prerequ}
+%\include{measure-theory}
+%%\include{topology}
+%\include{functional-analysis}
+%\include{game-theory}
+
+\include{exsitence-uniqueness}
+\include{bounds}
+
+
+\include{computations}
+
+\include{further-results}
+
+\include{appendix}
+\end{document}
